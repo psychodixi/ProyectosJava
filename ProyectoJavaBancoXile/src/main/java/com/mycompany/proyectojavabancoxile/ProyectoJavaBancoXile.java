@@ -73,7 +73,6 @@ public class ProyectoJavaBancoXile {
             + "5. SALIR");
             System.out.println("INGRESE UNA OPCIÓN");
             opc = input.nextInt();
-        } while (opc < 1 || opc > 5);
             switch (opc) {
             case 1:
                 System.out.println("<===CAMBIAR CLAVE===>");
@@ -110,67 +109,38 @@ public class ProyectoJavaBancoXile {
                 
                 break;
             case 2:
-                int giroDinero = 0;
-                int veinteMil = 0;
-                int diezMil = 0;
-                int cincoMil = 0;
-                int dosMil = 0;
-                int unMil = 0;
-                int saldoInicial = 0;
-                int saldoFinal = 0;
-                contador = 1;
+                contador = 0;
+                respuesta = 0;
                 do {
                     System.out.println("GIRO DE DINERO\n"
-                            + "<=================>\n"
-                            + "INGRESE EL MONTO QUE DESEE GIRAR\n"
-                            + "- EL GIRO MÍNIMO ES DE 1.000$\n"
-                            + "- EL GIRO MÁXIMO ES DE 200.000$\n");
-                giroDinero = input.nextInt();
-                saldoInicial = giroDinero;
-                
-                } while ((giroDinero < 1000 || giroDinero > 200000));
-                
-                    if (giroDinero >=  20000) {
-                        veinteMil = giroDinero / 20000;
-                        giroDinero = giroDinero - (veinteMil * 20000);
-                    
-                }
-                
-                    if (giroDinero >= 10000) {
-                        diezMil = giroDinero / 10000;
-                        giroDinero = giroDinero - (diezMil * 10000);
-                    
-                }
-                    
-                    if (giroDinero >= 5000) {
-                        cincoMil = giroDinero / 5000;
-                        giroDinero = giroDinero - (cincoMil * 5000);
-                    
-                }
-                    if (giroDinero >= 2000) {
-                        dosMil = giroDinero / 2000;
-                        giroDinero = giroDinero - (dosMil * 5000);
-                
+                        + "SU SALDO ES " + saldo + " $");
+                System.out.println("INGRESE LA CANTIDAD QUE DESEE GIRAR\n"
+                        + "<====================>");
+                giro = input.nextInt();
+                System.out.println("USTED HA GIRADO " + giro + " $");
+                saldo = saldo - giro;
+                System.out.println("SU NUEVO SALDO ES " + saldo);
+                    System.out.println("<====================>\n"
+                            + "¿DESEA REALIZAR UN NUEVO GIRO DE DINERO?\n"
+                            + "1. SI\n"
+                            + "2. NO");
+                    respuesta = input.nextInt();
+                    if (respuesta != 1 && respuesta != 2) {
+                        System.out.println("LA OPCIÓN INGRESADA NO ES VÁLIDA");
                     }
-                    
-                    if (giroDinero >= 1000) {
-                        unMil = giroDinero / 1000;
-                        giroDinero = giroDinero - (unMil * 1000);
-                        if (giroDinero != 0) {
-                            saldoFinal = saldoInicial - giroDinero;
-                            System.out.println("EL MÁXIMO DINERO A ENTREGAR ES DE: " + saldoFinal);
-                            
-                        }
-                }
-                    
-                    System.out.println("LA CANDITAD DE BILLETES DE 20000 ES: " + veinteMil + "\n"
-                            + "LA CANTIDAD DE BILLETES DE 10000 ES: " + diezMil + "\n"
-                                    + "LA CANTIDAD DE BILLETES DE 5000 ES: " + cincoMil + "\n"
-                                            + "LA CANTIDAD DE BILLETES DE 2000 ES: " + dosMil + "\n"
-                                                    + "LA CANTIDAD DE BILLETES DE 1000 ES: " + unMil + "\n"
-                                                            + "EL RESTO QUE QUEDA ES: " + giroDinero + "\n"
-                                                                    + "EL TOTAL DEL GIRO ES DE: " + saldoFinal);
-                    
+                        
+                } while (respuesta != 2);
+                contador = 0;
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 break;
             case 3:
                 
@@ -187,6 +157,7 @@ public class ProyectoJavaBancoXile {
             
         }
         
+        }while (opc == 5);  
         
         
         
