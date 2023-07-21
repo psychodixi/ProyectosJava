@@ -1,0 +1,41 @@
+package paquete;
+
+import javax.swing.JOptionPane;
+
+
+public class Afiliado {
+    
+    String rut;
+    Double monto;
+
+    public Afiliado(String rut, Double monto) {
+        this.rut = rut;
+        this.monto = monto;
+    }
+
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String rut) {
+        this.rut = rut;
+    }
+
+    public Double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(Double monto) {
+        this.monto = monto;
+    }
+    
+    public void mostrar(){
+        
+        JOptionPane.showMessageDialog(null, "RUT: " + rut + "\n"
+                + "MONTO: " + monto);
+    }
+    
+   
+    
+    
+}
