@@ -1,0 +1,63 @@
+package paquete;
+
+import javax.swing.JOptionPane;
+
+
+public class Menu {
+    
+    public static void main(String[] args) {
+        
+        Afiliado arrayAfiliados[] = new Afiliado[3];
+        
+        int opc;
+        
+        do {            
+            opc = Integer.parseInt(JOptionPane.showInputDialog("1. INGRESAR AFILIADOS \n"
+            + "2. BUSCAR AFILIADO POR RUT \n"
+            + "3. SALIR"));
+            
+            switch (opc) {
+                case 1:
+                    
+                    for (int i = 0; i < arrayAfiliados.length; i++) {
+                        String r = JOptionPane.showInputDialog(null, "INGRESE RUT");
+                        double m = Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE MONTO"));
+                        arrayAfiliados[i] = new Afiliado(r, m);
+                        
+                    }
+                    break;
+                
+                case 2:
+                    
+                    String buscar = JOptionPane.showInputDialog(null, "INGRESE EL RUT A BUSCAR");
+                    
+                    
+                    for (int i = 0; i < arrayAfiliados.length; i++) {
+                        
+                        if (buscar.equals(arrayAfiliados[i].getRut())) {
+                            arrayAfiliados[i].mostrar();
+                            
+                        } else if (i==2){
+                            JOptionPane.showMessageDialog(null, "EL RUT INGRESADO NO EXISTE");
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    break;
+                    
+                case 3:
+                    JOptionPane.showMessageDialog(null, "PROGRAMA FINALIZADO");
+                    System.exit(0);
+                    
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "INGRESE UNA OPCIÓN VÁLIDA");
+            }
+        } while (true);
+    }
+}
