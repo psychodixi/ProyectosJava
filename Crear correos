@@ -1,0 +1,43 @@
+package cetchulemaxi;
+
+import javax.swing.JOptionPane;
+
+public class CetchuleMaxi {
+
+    
+    public static void main(String[] args) {
+        
+        String nombre = JOptionPane.showInputDialog(null, "Ingrese nombre");
+        String apellido = JOptionPane.showInputDialog(null, "Ingrese apellido");
+        String correo = "";
+        
+        char nom[] = nombre.toCharArray();
+        int tamNom = nom.length;
+        
+        for (int i = 0; i < 3; i++) {
+            correo = correo + nom[i];
+            
+        }
+        
+        correo = correo + ".";
+        
+        char ape[] = apellido.toCharArray();
+        int tamApe = ape.length;
+        
+        for (int i = 0; i < 3; i++) {
+            correo = correo + ape[i];
+            
+        }
+        
+        correo = correo + "@cetchule.cl";
+        
+        JOptionPane.showMessageDialog(null, "EL CORREO ES: " + correo);
+        
+        
+        
+        
+        
+        
+    }
+    
+}
