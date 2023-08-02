@@ -5,14 +5,49 @@ import javax.swing.JOptionPane;
 
 public class Afiliado {
     
+    
+    String nombre;
+    String apellido;
+    String correo;
     String rut;
     Double monto;
 
-    public Afiliado(String rut, Double monto) {
+    public Afiliado(String nombre, String apellido, String rut, Double monto) {
+        this.nombre = nombre;
+        this.apellido = apellido;
         this.rut = rut;
         this.monto = monto;
     }
 
+    
+    // nuevos ingresados para taller dos
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getApellido() {
+        return apellido;
+    }
+    
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
+    public String getCorreo() {
+        return correo;
+    }
+    
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+    
+    //
+    
     public String getRut() {
         return rut;
     }
@@ -29,13 +64,55 @@ public class Afiliado {
         this.monto = monto;
     }
     
-    public void mostrar(){
+    public void crearCorreo(){
         
-        JOptionPane.showMessageDialog(null, "RUT: " + rut + "\n"
-                + "MONTO: " + monto);
+        correo = "";
+        
+        char nom[] = nombre.toCharArray();
+        int tamNom = nom.length;
+        
+        for (int i = 0; i < 3; i++) {
+            correo = correo + nom[i];
+            
+        }
+        
+        correo = correo + ".";
+        
+        char ape[] = apellido.toCharArray();
+        int tamApe = ape.length;
+        
+        for (int i = 0; i < 3; i++) {
+            correo = correo + ape[i];
+            
+        }
+        
+        char run[] = rut.toCharArray();
+        int tamRun = run.length;
+        
+        for (int i = tamRun-3; i < tamRun; i++) {
+            correo = correo + run[i];
+            
+        }
+        
+        correo = correo + "@AFP.cl";
+        
+        JOptionPane.showMessageDialog(null, "EL CORREO ES: " + correo);
     }
     
-   
+    public void mostrarCorreo(){
+        
+        JOptionPane.showMessageDialog(null, "TODOS LOS CORREOS CREADOS: \n"
+                + "CORREO: " + correo); 
+    }
     
     
+    public void mostrar(){
+        
+        
+        JOptionPane.showMessageDialog(null, "NOMBRE: " + nombre + "\n"
+        + "APELLIDO: " + apellido + "\n"
+        + "RUT : " + rut + "\n"
+        + "MONTO : " + monto + "\n"
+        + "CORREO: " + correo + "\n");
+    }  
 }
