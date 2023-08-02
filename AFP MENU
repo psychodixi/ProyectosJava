@@ -14,16 +14,21 @@ public class Menu {
         do {            
             opc = Integer.parseInt(JOptionPane.showInputDialog("1. INGRESAR AFILIADOS \n"
             + "2. BUSCAR AFILIADO POR RUT \n"
-            + "3. SALIR"));
+            + "3. MOSTRAR DATOS DEL AFILIADO CON MAYOR MONTO \n"
+            + "4. MODIFICAR DATOS DEL AFILIADO \n"
+            + "5. CREAR CORREOS PARA AFILIADOS \n"
+            + "6. MOSTRAR CORREOS CREADOS \n"
+            + "7. SALIR"));
             
             switch (opc) {
                 case 1:
                     
                     for (int i = 0; i < arrayAfiliados.length; i++) {
-                        String r = JOptionPane.showInputDialog(null, "INGRESE RUT");
-                        double m = Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE MONTO"));
-                        arrayAfiliados[i] = new Afiliado(r, m);
-                        
+                        String n = JOptionPane.showInputDialog(null, "INGRESE NOMBRE DEL AFILIADO " + i+1);
+                        String a = JOptionPane.showInputDialog(null, "APELLIDO DEL AFILIADO " + i+1);
+                        String r = JOptionPane.showInputDialog(null, "INGRESE RUT DEL AFILIADO " + i+1);
+                        double m = Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE MONTO DEL AFILIADO " + i+1));
+                        arrayAfiliados[i] = new Afiliado(n, a, r, m); 
                     }
                     break;
                 
@@ -39,22 +44,87 @@ public class Menu {
                             
                         } else if (i==2){
                             JOptionPane.showMessageDialog(null, "EL RUT INGRESADO NO EXISTE");
-                        }
-                        
+                        } 
                     }
-                    
-                    
-                    
-                    
-                    
-                    
                     break;
                     
                 case 3:
+                    
+                    double mayor = 0;
+                    int p = 0;
+                    for (int i = 0; i < arrayAfiliados.length; i++) {
+                        if (arrayAfiliados[i].getMonto() > mayor) {
+                            mayor = arrayAfiliados[i].getMonto();
+                            p = i;
+                        }
+                        
+                    }
+                    arrayAfiliados[p].mostrar();
+                    break;
+                    
+                case 4:
+                    
+                    String buscar2 = JOptionPane.showInputDialog(null, "INGRESE EL RUT A BUSCAR");
+                    
+                    int op = 0;
+                    int contador = 1;
+                    
+                    for (int i = 0; i < arrayAfiliados.length; i++) {
+                        
+                        if (buscar2.equals(arrayAfiliados[i].getRut())) {
+                            
+                            do {
+                                //poner nuevos datos para cambiar nombre, apellido
+                                op = Integer.parseInt(JOptionPane.showInputDialog("1. MODIFICAR EL RUT \n"
+                                        + "2. MODIFICAR EL MONTO \n"
+                                        + "3. SALIR"));
+                                switch (op) {
+                                    case 1:
+                                        arrayAfiliados[i].setRut(JOptionPane.showInputDialog(null, "INGRESE EL NUEVO NOMBRE"));
+                                        arrayAfiliados[i].crearCorreo();
+                                        break;   
+                                    case 2:
+                                        arrayAfiliados[i].setMonto(Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE EL NUEVO MONTO")));
+                                        break; 
+                                    case 3:
+                                        JOptionPane.showMessageDialog(null, "USTED HA SELECCIONADO SALIR");
+                                        contador = 2;
+                                        break;
+                                    default:
+                                        throw new AssertionError();
+                                }
+                            } while (contador == 1);
+                            
+                        } 
+                    }
+                    
+                    
+                    break;
+                    
+                case 5:
+                    
+                    for (int i = 0; i < arrayAfiliados.length; i++) {
+                        arrayAfiliados[i].crearCorreo();
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, "LISTA DE TODOS LOS CORREOS");
+                    break;
+                    
+                    
+                case 6 :
+                    for (int i = 0; i < arrayAfiliados.length; i++) {
+                        arrayAfiliados[i].mostrarCorreo();
+                        
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, "LISTA DE TODOS LOS CORREOS DE AFILIADOS");
+                    break;
+                    
+                case 7:
                     JOptionPane.showMessageDialog(null, "PROGRAMA FINALIZADO");
                     System.exit(0);
                     
-                    break;
+                    break;    
                 default:
                     JOptionPane.showMessageDialog(null, "INGRESE UNA OPCIÓN VÁLIDA");
             }
