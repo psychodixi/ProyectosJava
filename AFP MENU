@@ -1,5 +1,6 @@
 package paquete;
 
+
 import javax.swing.JOptionPane;
 
 
@@ -24,10 +25,10 @@ public class Menu {
                 case 1:
                     
                     for (int i = 0; i < arrayAfiliados.length; i++) {
-                        String n = JOptionPane.showInputDialog(null, "INGRESE NOMBRE DEL AFILIADO " + i+1);
-                        String a = JOptionPane.showInputDialog(null, "APELLIDO DEL AFILIADO " + i+1);
-                        String r = JOptionPane.showInputDialog(null, "INGRESE RUT DEL AFILIADO " + i+1);
-                        double m = Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE MONTO DEL AFILIADO " + i+1));
+                        String n = JOptionPane.showInputDialog(null, "INGRESE NOMBRE DEL AFILIADO " + (i+1));
+                        String a = JOptionPane.showInputDialog(null, "APELLIDO DEL AFILIADO " + (i+1));
+                        String r = JOptionPane.showInputDialog(null, "INGRESE RUT DEL AFILIADO " + (i+1));
+                        double m = Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE MONTO DEL AFILIADO " + (i+1)));
                         arrayAfiliados[i] = new Afiliado(n, a, r, m); 
                     }
                     break;
@@ -41,6 +42,7 @@ public class Menu {
                         
                         if (buscar.equals(arrayAfiliados[i].getRut())) {
                             arrayAfiliados[i].mostrar();
+                            i = 3;
                             
                         } else if (i==2){
                             JOptionPane.showMessageDialog(null, "EL RUT INGRESADO NO EXISTE");
@@ -75,18 +77,34 @@ public class Menu {
                             
                             do {
                                 //poner nuevos datos para cambiar nombre, apellido
-                                op = Integer.parseInt(JOptionPane.showInputDialog("1. MODIFICAR EL RUT \n"
-                                        + "2. MODIFICAR EL MONTO \n"
-                                        + "3. SALIR"));
+                                op = Integer.parseInt(JOptionPane.showInputDialog("1. MODIFICAR EL NOMBRE DEL AFILIADO \n"
+                                        + "2. MODIFICAR EL APELIDO DEL AFILIADO \n"
+                                        + "3. MODIFICAR EL RUT DEL AFILIADO \n"
+                                        + "4. MODIFICAR EL MONTO \n"
+                                        + "5. SALIR"));
                                 switch (op) {
                                     case 1:
-                                        arrayAfiliados[i].setRut(JOptionPane.showInputDialog(null, "INGRESE EL NUEVO NOMBRE"));
+                                        arrayAfiliados[i].setNombre(JOptionPane.showInputDialog(null, "CAMBIO DE NOMBRE: \n"
+                                                + "INGRESE EL NUEVO NOMBRE DEL AFILIADO "));
+                                        arrayAfiliados[i].crearCorreo();
+                                        break;
+                                    case 2:
+                                        
+                                        arrayAfiliados[i].setApellido(JOptionPane.showInputDialog(null, "CAMBIO DE APELLIDO \n"
+                                                + "INGRESE EL NUEVO NOMBRE DEL AFILIADO "));
+                                        arrayAfiliados[i].crearCorreo();
+                                        
+                                        break;
+                                    case 3:
+                                        arrayAfiliados[i].setRut(JOptionPane.showInputDialog(null, "CAMBIO DE RUT: \n"
+                                                + "INGRESE EL NUEVO RUT DEL AFILIADO "));
                                         arrayAfiliados[i].crearCorreo();
                                         break;   
-                                    case 2:
-                                        arrayAfiliados[i].setMonto(Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE EL NUEVO MONTO")));
+                                    case 4:
+                                        arrayAfiliados[i].setMonto(Double.parseDouble(JOptionPane.showInputDialog(null, "CAMBIO DE MONTO: \n"
+                                                + "INGRESE EL NUEVO MONTO DEL AFILIADO")));
                                         break; 
-                                    case 3:
+                                    case 5:
                                         JOptionPane.showMessageDialog(null, "USTED HA SELECCIONADO SALIR");
                                         contador = 2;
                                         break;
