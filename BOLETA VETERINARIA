@@ -1,0 +1,39 @@
+
+package paquete;
+
+import javax.swing.JOptionPane;
+
+
+public class Boleta {
+    
+    double montoTotal;
+    String rutCliente;
+    
+    public Boleta (double montoTotal, String rutCliente) {
+        this.montoTotal = montoTotal;
+        this.rutCliente = rutCliente;
+    }
+    
+    public double montoTotal() {
+        return montoTotal;
+    }
+    
+    public void setmontoTotal(double montoTotal) {
+        this.montoTotal = montoTotal;
+    }
+    
+    public String rutCliente() {
+        return rutCliente;
+    }
+    
+    public void setrutCliente(String rutCliente) {
+        this.rutCliente = rutCliente;
+    }
+    
+    
+    public void mostrarBoleta(){
+        JOptionPane.showInputDialog(null, "RUT DEL CLIENTE: " + rutCliente + "\n"
+                + "MONTO TOTAL: " + montoTotal);
+    }
+    
+}
