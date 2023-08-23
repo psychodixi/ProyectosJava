@@ -1,0 +1,67 @@
+
+package paquete;
+
+import javax.swing.JOptionPane;
+
+public class Paciente {
+    
+    String nombre;
+    String especie;
+    double peso;
+    int edad;
+    
+    public Paciente (String nombre, String especie, double peso, int edad) {
+        this.nombre = nombre;
+        this.especie = especie;
+        this.peso = peso;
+        this.edad = edad;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    public String getEspecie() {
+        return especie;
+    }
+    
+    public void setEspecie(String especie) {
+        this.especie = especie;
+    }
+    
+    public Double getPeso() {
+        return peso;
+    }
+    
+    public void setPeso(Double peso) {
+        this.peso = peso;
+    }
+    
+    public int getEdad() {
+        return edad;
+    }
+    
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
+    public void mostrarDatos(){
+        JOptionPane.showInputDialog(null, "NOMBRE: " + nombre + "\n"
+                + "ESPECIE: " + especie + "\n"
+                + "PESO: " + peso + "\n"
+                + "EDAD: " + edad + "\n");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
