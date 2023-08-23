@@ -1,0 +1,118 @@
+package paquete;
+
+import javax.swing.JOptionPane;
+
+public class Menu {
+    
+    public static void main(String[] args) {
+        Paciente arrayPacientes[] = new Paciente[3];
+        Boleta arrayBoletas[] = new Boleta[3];
+        int contadorGatos = 0;
+        int opc;
+        
+        do {
+            opc = Integer.parseInt(JOptionPane.showInputDialog("VETERINARIA DIXON'S \n"
+                    + "1. INGRESAR PACIENTE \n"
+                    + "2. BUSCAR PACIENTE POR NOMBRE \n"
+                    + "3. CANTIDAD DE GATOS ATENDIDOS \n"
+                    + "4. BUSCAR BOLETA POR RUT DE CLIENTE \n"
+                    + "5. SALIR"));
+            
+            switch (opc) {
+                case 1:
+                        for (int i = 0; i < arrayPacientes.length; i++) {
+                            JOptionPane.showInputDialog("1. INGRESAR PACIENTE");
+                            String especie = JOptionPane.showInputDialog("INGRESE LA ESPECIE DEL PACIENTE \n"
+                            + "SOLO SE PERMITEN ESTOS PACIENTES!!!"
+                            + "1. GATOS \n"
+                            + "2. PERROS \n"
+                            + "3. AVES");
+                            do {
+                                if (especie.equals("GATOS")) {
+                                    contadorGatos++;
+                                    especie = "GATO";
+                                    
+                                } else {
+                                    JOptionPane.showInputDialog("OPCIÓN INVÁLIDA");
+                                    
+                                    if (especie.equals("PERROS")) {
+                                        especie = "PERRO";
+                                    } else {
+                                        JOptionPane.showInputDialog("OPCIÓN INVÁLIDA");
+                                        
+                                        if (especie.equals("PERROS")) {
+                                            especie = "AVE";
+                                            
+                                        } else {
+                                            JOptionPane.showInputDialog("OPCIÓN INVALIDA");
+                                        }
+                                    }
+                                }
+                                
+                            } while (opc != 0);
+                                
+                                
+                       
+                    String nombre = JOptionPane.showInputDialog("INGRESE EL NOMBRE DEL PACIENTE");
+                    double peso = Double.parseDouble(JOptionPane.showInputDialog("INGRESE EL PESO DEL PACIENTE"));
+                    int edad = Integer.parseInt(JOptionPane.showInputDialog("INGRESE EL PESO DEL PACIENTE"));
+                    String rutCliente = JOptionPane.showInputDialog("INGRESE EL RUT DEL CLIENTE");
+                    double montoTotal = Double.parseDouble(JOptionPane.showInputDialog("INGRESE EL MONTO TOTAL PAGADO"));
+                            if (especie.equals("GATO")) {
+                            montoTotal = (montoTotal * 0.6);
+                            }
+                    
+                    
+                        }
+                    break;
+                    
+                case 2:
+                    String buscar = JOptionPane.showInputDialog(null, "2. BUSCAR PACIENTE POR NOMBRE " + "\n"
+                            + "INGRESE EL NOMBRE DEL PACIENTE");
+                    for (int i = 0; i < arrayPacientes.length; i++) {
+                        
+                        if (buscar.equals(arrayPacientes[i].getnombre())) {
+                            arrayPacientes[i].mostrarDatos();
+                            
+                            i = 3;
+                            
+                        } else if (i==2){
+                            JOptionPane.showMessageDialog(null, "EL NOMBRE INGRESADO NO EXISTE");
+                        } 
+                    }
+                    
+                    break;
+                    
+                case 3:
+                    JOptionPane.showInputDialog("3. CANTIDAD DE GATOS ATENDIDOS " + "\n"
+                            + "CANTIDAD DE GATOS ATENDIDOS: " + contadorGatos);
+                    
+                    break;
+                    
+                case 4:
+                    String buscar2 = JOptionPane.showInputDialog(null, "4. BUSCAR PACIENTE POR RUT DEL CLIENTE " + "\n"
+                            + "INGRESE EL NOMBRE DEL PACIENTE");
+                    for (int i = 0; i < arrayPacientes.length; i++) {
+                        
+                        if (buscar2.equals(arrayPacientes[i].getrutCliente())) {
+                            arrayPacientes[i].mostrarDatos();
+                            i = 3;
+                            
+                        } else if (i==2){
+                            JOptionPane.showMessageDialog(null, "EL NOMBRE INGRESADO NO EXISTE");
+                        } 
+                    }
+                    
+                    break;
+                    
+                case 5:
+                    JOptionPane.showMessageDialog(null, "5. SALIR " + "\n"
+                            + "PROGRAMA FINALIZADO");
+                    System.exit(0);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "INGRESE UNA OPCIÓN VÁLIDA");
+            }
+        } while (opc !=5);
+    }
+}
