@@ -1,0 +1,204 @@
+
+package paquete;
+
+import javax.swing.JOptionPane;
+
+
+public class Menu {
+    public static void main(String[] args) {
+        
+        Boleta arrayBoletas[] = new Boleta[3];
+        Producto arrayProductos[] = new Producto[3];
+        arrayProductos[0] = new Producto("Monitor", 40, 99000);
+        arrayProductos[1] = new Producto("Gabinete", 30, 45000);
+        arrayProductos[2] = new Producto("Memorias Ram", 80, 25000);
+        int opc = 0;
+        int opc2 = 0;
+        int cantMont = 0;
+        double carrito = 0;
+        int conStock = 0;
+        
+        do {
+            opc = Integer.parseInt(JOptionPane.showInputDialog("1. CREAR VENTA \n"
+                    + "2. CONSULTAR STOCK DE UN PRODUCTO \n"
+                    + "3. CONSULTAR BOLETA POR RUT \n"
+                    + "4. TOTAL DINERO RECAUDADO \n"
+                    + "5. SALIR"));
+            
+            switch (opc) {
+                case 1:
+                    
+                    for (int i = 0; i < arrayBoletas.length; i++) {
+                        String r = JOptionPane.showInputDialog("INGRESE EL RUT DEL CLIENTE");
+                        
+                        do {
+                            opc = 0;
+                            opc2 = Integer.parseInt(JOptionPane.showInputDialog("INGRESE EL NOMBRE DEL PRODUCTO \n"
+                            + "ACTUALMENTE DISPONEMOS DE: \n"
+                                + "1. MONITORES: " + "\n"
+                                + "2. GABINETES: " + "\n"
+                                + "3. MEMORIAS RAM: " + "\n"
+                                + "4. SALIR:"));
+                            switch (opc2) {
+                            case 1:
+                                JOptionPane.showMessageDialog(null, "MONITORES \n"
+                                        + "DISPONIBILIDAD: " + arrayProductos[0].getStockProducto());
+                                cantMont = Integer.parseInt(JOptionPane.showInputDialog(null, "INGRESE LA CANTIDAD DE MONITORES A COMPRAR"));
+                                
+                                if (cantMont <= arrayProductos[0].getStockProducto()) {
+                                    int stockActual = arrayProductos[0].getStockProducto()-cantMont;
+                                    arrayProductos[0].setStockProducto(stockActual);
+                                    
+                                    JOptionPane.showMessageDialog(null, "USTED SELECCIONÓ: " + cantMont + " MONITORES");
+                                    carrito = carrito + (cantMont * arrayProductos[0].getPrecioVenta());
+                                    
+                                } else {
+                                    
+                                    JOptionPane.showMessageDialog(null, "LA CANTIDAD SELECCIONADA NO SE ENCUENTRA DISPONIBLE EN STOCK \n"
+                                            + "ACTUALEMENTE DISPONEMOS DE " + arrayProductos[0].getStockProducto());
+                                }
+                                
+                                
+                                
+                                break;
+                                
+                            case 2:
+                                JOptionPane.showMessageDialog(null, "GABINETES \n"
+                                        + "DISPONIBILIDAD: " + arrayProductos[1].getStockProducto());
+                                cantMont = Integer.parseInt(JOptionPane.showInputDialog(null, "INGRESE LA CANTIDAD DE GABINETES A COMPRAR"));
+                                
+                                if (cantMont <= arrayProductos[1].getStockProducto()) {
+                                    int stockActual = arrayProductos[1].getStockProducto()-cantMont;
+                                    arrayProductos[1].setStockProducto(stockActual);
+                                    
+                                    JOptionPane.showMessageDialog(null, "USTED SELECCIONÓ: " + cantMont + " GABINETES");
+                                    carrito = carrito + (cantMont * arrayProductos[0].getPrecioVenta());
+                                    
+                                } else {
+                                    
+                                    JOptionPane.showMessageDialog(null, "LA CANTIDAD SELECCIONADA NO SE ENCUENTRA DISPONIBLE EN STOCK \n"
+                                            + "ACTUALEMENTE DISPONEMOS DE " + arrayProductos[0].getStockProducto());
+                                }
+                                
+                                break;
+                                
+                            case 3:
+                                JOptionPane.showMessageDialog(null, "MEMORIAS RAM \n"
+                                        + "DISPONIBILIDAD: " + arrayProductos[1].getStockProducto());
+                                cantMont = Integer.parseInt(JOptionPane.showInputDialog(null, "INGRESE LA CANTIDAD DE MEMORIAS RAM A COMPRAR"));
+                                
+                                if (cantMont <= arrayProductos[2].getStockProducto()) {
+                                    int stockActual = arrayProductos[2].getStockProducto()-cantMont;
+                                    arrayProductos[2].setStockProducto(stockActual);
+                                    
+                                    JOptionPane.showMessageDialog(null, "USTED SELECCIONÓ: " + cantMont + " MEMORIAS RAM");
+                                    carrito = carrito + (cantMont * arrayProductos[2].getPrecioVenta());
+                                    
+                                } else {
+                                    
+                                    JOptionPane.showMessageDialog(null, "LA CANTIDAD SELECCIONADA NO SE ENCUENTRA DISPONIBLE EN STOCK \n"
+                                            + "ACTUALEMENTE DISPONEMOS DE " + arrayProductos[2].getStockProducto());
+                                }
+                                
+                                break;
+                                
+                            case 4:
+                                arrayBoletas[i] = new Boleta(r, carrito);
+                                JOptionPane.showMessageDialog(null, "VENTA CREADA EXITOSAMENTE");
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "OPCIÓN NO VALIDA");
+                        }
+                            
+                        } while (opc2 !=4);
+                        
+                                
+                    }
+                    
+                    
+                    break;
+                    
+                case 2:
+                    conStock = Integer.parseInt(JOptionPane.showInputDialog(null, "CONSULTAR STOCK DE UN PRODUCTO \n"
+                            + "1. MONITORES \n"
+                            + "2. GABINETES \n"
+                            + "3. MEMORIAS RAM \n"));
+                    switch (conStock) {
+                        case 1:
+                            if (arrayProductos[0].getStockProducto() == 0) {
+                                JOptionPane.showMessageDialog(null, "NO HAY SUFICIENTE STOCK");
+                            } else {
+                                
+                                JOptionPane.showMessageDialog(null, "STOCK DE MONITORES: " + arrayProductos[0].getStockProducto()); 
+                                
+                            }
+                            
+                            
+                            break;
+                        
+                        case 2:
+                            if (arrayProductos[1].getStockProducto() == 0) {
+                                JOptionPane.showMessageDialog(null, "NO HAY SUFICIENTE STOCK");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "STOCK DE MONITORES: " + arrayProductos[1].getStockProducto()); 
+                                
+                            }
+                            
+                            break;
+                            
+                        case 3:
+                            if (arrayProductos[2].getStockProducto() == 0) {
+                                JOptionPane.showMessageDialog(null, "NO HAY SUFICIENTE STOCK");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "STOCK DE MONITORES: " + arrayProductos[2].getStockProducto()); 
+                            }
+                            
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+                    
+                    break;
+                    
+                case 3:
+                    String buscar2 = JOptionPane.showInputDialog(null, "CONSULTAR BOLETA POR RUT: " + "\n"
+                            + "INGRESE EL RUT DEL CLIENTE");
+                    for (int i = 0; i < arrayBoletas.length; i++) {
+                        
+                        if (buscar2.equals(arrayBoletas[i].getrutCliente())) {
+                            arrayBoletas[i].mostrarBoleta();
+                            i = 3;
+                            
+                        } else if (i==2){
+                            JOptionPane.showMessageDialog(null, "EL NOMBRE INGRESADO NO EXISTE");
+                        } 
+                    }
+                    
+                    break;
+                    
+                case 4:
+                    double totalTotalVentas = 0;
+                    for (int i = 0; i < arrayBoletas.length; i++) {
+                        totalTotalVentas += arrayBoletas[i].getTotalVenta();
+                        
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, "EL TOTAL DE DINERO RECAUDADO ES: \n"
+                            + totalTotalVentas);
+                    
+                    break;
+                    
+                case 5:
+                    JOptionPane.showMessageDialog(null, "PROGRAMA FINALIZADO");
+                    System.exit(0);
+                    
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "OPCIÓN NO VÁLIDA");
+            }
+            
+            
+        } while (opc !=5);
+    }
+    
+}
