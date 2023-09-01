@@ -1,0 +1,43 @@
+
+package paquete;
+
+
+public class Producto {
+    
+    String nombreProducto;
+    int stockProducto;
+    double precioVenta;
+
+    public Producto(String nombreProducto, int stockProducto, double precioVenta) {
+        this.nombreProducto = nombreProducto;
+        this.stockProducto = stockProducto;
+        this.precioVenta = precioVenta;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public int getStockProducto() {
+        return stockProducto;
+    }
+
+    public void setStockProducto(int stockProducto) {
+        this.stockProducto = stockProducto;
+    }
+
+    public double getPrecioVenta() {
+        return precioVenta;
+    }
+
+    public void setPrecioVenta(double precioVenta) {
+        this.precioVenta = precioVenta;
+    }
+    
+    
+    
+}
