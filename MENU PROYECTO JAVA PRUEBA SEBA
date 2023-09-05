@@ -1,0 +1,101 @@
+import javax.swing.JOptionPane;
+
+public class Menu {
+    public static void main(String[] args) {
+        
+        //PRODUCTOS EXISTENTES
+        Producto arrayProductos[] = new Producto[100];
+        arrayProductos[0] = new Producto("Monitor", 99990.0, 50);
+        arrayProductos[1] = new Producto("Audifonos", 19990.0, 50);
+        arrayProductos[2] = new Producto("Notebook", 449990.0, 50);
+        arrayProductos[3] = new Producto("Gabinete", 54990.0, 50);
+        arrayProductos[4] = new Producto("Mouse", 18990.0, 50);
+        
+        
+        //ARRAY DONDE SE GUARDARDARÁN LAS COMPRAS REALIZADAS
+        Compra arrayCompras[] = new Compra[1000];
+        
+        //CREACIÓN DE MENU
+        int op;
+        int opc;
+        do {
+            op = Integer.parseInt(JOptionPane.showInputDialog("MENU DE OPCIONES\n"+
+                    "\n1. Ingresar una Compra"+
+                    "\n2. Ingresar un producto nuevo a bodega"+
+                    "\n3. Consultar stock de un producto"+
+                    "\n4. Mostrar productos sin stock"+
+                    "\n5. Buscar Compra por cliente"+
+                    "\n6. Mostrar total recaudado por Compras con TARJETA"+
+                    "\n7. Mostrar total recaudado por Compras con EFECTIVO"+
+                    "\n8. Mostrar total recaudado"+
+                    "\n9. SALIR\n"+
+                    "\n INGRESE UNA OPCIÓN "));
+            
+            switch (op) {
+                case 1:
+                    String c = JOptionPane.showInputDialog(null,"INGRESE RUT DEL CLIENTE");
+                    String aProductos = "";
+                    for (int i = 0; arrayProductos[i] != null ; i++) {
+                            
+                        aProductos += "\n" + (i+1) + arrayProductos[i].getNombre();
+                        
+                    }
+                    
+                    do {
+                         opc = Integer.parseInt(JOptionPane.showInputDialog( "a" ));
+                            
+                         JOptionPane.showMessageDialog(null, aProductos);
+
+                        
+                    } while (opc != 2);
+                   
+                    
+                    break;
+                    
+                case 2:
+                    int f = 0;
+                    String n = JOptionPane.showInputDialog(null, "INGRESE UN NUEVO Nombre");
+                    double p = Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE UN NUEVO Nombre"));
+                    int s = Integer.parseInt(JOptionPane.showInputDialog(null, "INGRESE UN NUEVO Nombre"));
+
+                    for (int i = 0;  arrayProductos[i] != null; i++) {
+                        f++;
+                    }
+                    
+                    
+                    break;
+                    
+                case 3:
+                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 3
+                    break;
+                    
+                case 4:
+                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 4
+                    break;
+                    
+                case 5:
+                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 5
+                    break;
+                    
+                case 6:
+                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 6
+                    break;
+                    
+                case 7:
+                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 7
+                    break;
+                    
+                case 8:
+                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 8
+                    break;
+                    
+                case 9:
+                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 9
+                    break;    
+                    
+                default:
+                    //INGRESE CÓDIGO CORRESPONDIENTE       
+            }
+        }while (op!=9);  
+    }
+}
