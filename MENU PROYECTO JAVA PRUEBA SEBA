@@ -33,22 +33,101 @@ public class Menu {
             
             switch (op) {
                 case 1:
-                    String c = JOptionPane.showInputDialog(null,"INGRESE RUT DEL CLIENTE");
-                    String aProductos = "";
+                    String listaP = "";  
+                    int largoP = 0;
+                    int largoC = 0;
+                    int opc = 0;
+                    int opc2 = 0;
+                    int cantidad = 0;
+                    double totPago = 0;
+                    String metPago = "";
+                    String rut = "";
+                    boolean conExit = false;
+                    
+
+                    
+                    //busca final de producto
                     for (int i = 0; arrayProductos[i] != null ; i++) {
-                            
-                        aProductos += "\n" + (i+1) + arrayProductos[i].getNombre();
-                        
+                        largoP++;
+                        listaP += "\n" + (i + 1) + ". " + arrayProductos[i].getNombre();
                     }
                     
-                    do {
-                         opc = Integer.parseInt(JOptionPane.showInputDialog( "a" ));
-                            
-                         JOptionPane.showMessageDialog(null, aProductos);
+                    //final de compras
+                    for (int i = 0; arrayCompras[i] != null; i++) {
+                        largoC++;
+                    }
 
+                    //solo ingresa si no es nulo
+                    do {
+                        rut = JOptionPane.showInputDialog(null,"Ingrese rut");
+                    } while (rut.equals(""));
+                    
+                    //crear arreglo con todos los stocks
+                    int compraReciente[] = new int[largoP];
+                    
+                    //llenar de stocks
+                    for (int i = 0; i < largoP; i++) {
+                        compraReciente[i] = arrayProductos[i].getStock();
+                    }
+                    
+                    //crear lista
+                    do {
+                        opc = Integer.parseInt(JOptionPane.showInputDialog(null, "Seleccione producto a comprar\n"+ listaP + "\n" + (largoP + 1) + ". Salir\n" + (largoP + 2) + ". Pagar"  ));
                         
-                    } while (opc != 2);
+                        if (opc > 0 && opc <= largoP) {
+                            
+                            cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Stock Disponible: "+compraReciente[opc-1]));
+                            
+                            if (cantidad <= compraReciente[opc-1]) {
+                                totPago += compraReciente[opc-1];
+                               compraReciente[opc-1] -= cantidad;
+                                
+                            }else{  
+                            JOptionPane.showMessageDialog(null, "Cantidad no disponible");
+                            }
+                            
+                        }else if(opc != largoP + 1 && opc != largoP + 2){
+                        JOptionPane.showMessageDialog(null, "Opcion no valida");
+                        }
+                        
+                        if (opc == largoP + 2) {
+                            opc2 = Integer.parseInt(JOptionPane.showInputDialog(null,"Total a pagar: "+totPago +"\n"
+                                + "Seleccione metodo pago\n"
+                                + "1. Tarjeta\n"
+                                + "2. Efectivo\n"
+                            ));
+                             
+
+                            switch (opc2) {
+                                case 1:
+                                    metPago = "Tarjeta";
+                                    for (int i = 0; i < largoP; i++) {
+                                        arrayProductos[i].setStock(compraReciente[i]);
+                                    }
+                                    conExit = true;
+                                    break;
+                                case 2:
+                                    metPago = "Efectivo";
+                                    for (int i = 0; i < largoP; i++) {
+                                        arrayProductos[i].setStock(compraReciente[i]);
+                                    }
+                                    conExit = true;
+                                    break;
+                                default:
+                                    JOptionPane.showMessageDialog(null, "Opcion no valida");
+                            }
+                                    
+                        }
+ 
+                        //boton salir o compra exitosa
+                    }while(opc != largoP + 1 && conExit == false);
+                    
                    
+                    
+                    if (metPago != "") {
+                        arrayCompras[largoC] = new Compra(rut,totPago,metPago);
+
+                    }
                     
                     break;
                     
