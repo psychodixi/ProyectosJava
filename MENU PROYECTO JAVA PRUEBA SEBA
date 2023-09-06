@@ -166,24 +166,19 @@ public class Menu {
                     
                 case 4:
 
-                    String largoP = "";
+                    String largoP2 = "";
                     int largoxd = 0;
                     for (int i = 0; arrayProductos[i] != null; i++) {
                         largoxd++;
-                        largoP += "\n" + (i+1) + "." + arrayProductos[i].getNombre();
+                        
+                        if (arrayProductos[i].getStock() == 0) {
+
+                                largoP2 += "\n" + (i+1) + "." + arrayProductos[i].getNombre();
+                        }
                         
                     }
                     
-                    JOptionPane.showMessageDialog(null, "PRODUCTOS SIN STOCK");
-                    for (int i = 0; i < arrayProductos.length; i++) {
-                        if (arrayProductos[i].getStock() == 0) {
-                            JOptionPane.showMessageDialog(null, largoP);
-                            
-                            
-                            
-                            
-                        }
-                    }
+                    JOptionPane.showMessageDialog(null, "PRODUCTOS SIN STOCK\n" + largoP2 );
                     break;
                     
                 case 5:
