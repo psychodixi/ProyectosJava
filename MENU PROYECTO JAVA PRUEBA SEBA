@@ -132,14 +132,17 @@ public class Menu {
                     break;
                     
                 case 2:
+                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 2
                     int f = 0;
                     String n = JOptionPane.showInputDialog(null, "INGRESE UN NUEVO Nombre");
-                    double p = Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE UN NUEVO Nombre"));
-                    int s = Integer.parseInt(JOptionPane.showInputDialog(null, "INGRESE UN NUEVO Nombre"));
+                    double p = Double.parseDouble(JOptionPane.showInputDialog(null, "INGRESE UN NUEVO Precio"));
+                    int s = Integer.parseInt(JOptionPane.showInputDialog(null, "INGRESE UN NUEVO Stock"));
 
                     for (int i = 0;  arrayProductos[i] != null; i++) {
                         f++;
                     }
+                    
+                    arrayProductos[f] = new Producto(n,p,s);
                     
                     
                     break;
