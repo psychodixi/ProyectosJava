@@ -1,3 +1,5 @@
+package com.mycompany.proyecto_prueba;
+
 import javax.swing.JOptionPane;
 
 public class Menu {
@@ -36,7 +38,7 @@ public class Menu {
                     String listaP = "";  
                     int largoP = 0;
                     int largoC = 0;
-                    int opc = 0;
+                    int opc1 = 0;
                     int opc2 = 0;
                     int cantidad = 0;
                     double totPago = 0;
@@ -72,25 +74,25 @@ public class Menu {
                     
                     //crear lista
                     do {
-                        opc = Integer.parseInt(JOptionPane.showInputDialog(null, "Seleccione producto a comprar\n"+ listaP + "\n" + (largoP + 1) + ". Salir\n" + (largoP + 2) + ". Pagar"  ));
+                        opc1 = Integer.parseInt(JOptionPane.showInputDialog(null, "Seleccione producto a comprar\n"+ listaP + "\n" + (largoP + 1) + ". Salir\n" + (largoP + 2) + ". Pagar"  ));
                         
-                        if (opc > 0 && opc <= largoP) {
+                        if (opc1 > 0 && opc1 <= largoP) {
                             
-                            cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Stock Disponible: "+compraReciente[opc-1]));
+                            cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Stock Disponible: "+compraReciente[opc1-1]));
                             
-                            if (cantidad <= compraReciente[opc-1]) {
-                                totPago += compraReciente[opc-1];
-                               compraReciente[opc-1] -= cantidad;
+                            if (cantidad <= compraReciente[opc1-1]) {
+                                totPago += compraReciente[opc1-1];
+                               compraReciente[opc1-1] -= cantidad;
                                 
                             }else{  
                             JOptionPane.showMessageDialog(null, "Cantidad no disponible");
                             }
                             
-                        }else if(opc != largoP + 1 && opc != largoP + 2){
+                        }else if(opc1 != largoP + 1 && opc1 != largoP + 2){
                         JOptionPane.showMessageDialog(null, "Opcion no valida");
                         }
                         
-                        if (opc == largoP + 2) {
+                        if (opc1 == largoP + 2) {
                             opc2 = Integer.parseInt(JOptionPane.showInputDialog(null,"Total a pagar: "+totPago +"\n"
                                 + "Seleccione metodo pago\n"
                                 + "1. Tarjeta\n"
@@ -120,7 +122,7 @@ public class Menu {
                         }
  
                         //boton salir o compra exitosa
-                    }while(opc != largoP + 1 && conExit == false);
+                    }while(opc1 != largoP + 1 && conExit == false);
                     
                    
                     
@@ -170,15 +172,20 @@ public class Menu {
                     int largoxd = 0;
                     for (int i = 0; arrayProductos[i] != null; i++) {
                         largoxd++;
-                        
-                        if (arrayProductos[i].getStock() == 0) {
-
-                                largoP2 += "\n" + (i+1) + "." + arrayProductos[i].getNombre();
-                        }
+                        largoP2 += "\n" + (i+1) + "." + arrayProductos[i].getNombre();
                         
                     }
                     
-                    JOptionPane.showMessageDialog(null, "PRODUCTOS SIN STOCK\n" + largoP2 );
+                    JOptionPane.showMessageDialog(null, "PRODUCTOS SIN STOCK");
+                    for (int i = 0; i < arrayProductos.length; i++) {
+                        if (arrayProductos[i].getStock() == 0) {
+                            JOptionPane.showMessageDialog(null, largoP2);
+                            
+                            
+                            
+                            
+                        }
+                    }
                     break;
                     
                 case 5:
@@ -188,7 +195,7 @@ public class Menu {
                     for (int i = 0; arrayCompras[i] != null; i++) {
 
                         if (buscar2.equals(arrayCompras[i].getCliente())) {
-                            arrayCompras[i].mostrarCompra();
+                            
                             i = 3;
 
                         } else if (i==2){
@@ -210,7 +217,8 @@ public class Menu {
                     
                     double totalMontoTotal = 0;
                     for (int i = 0; arrayCompras[i] != null; i++) {
-                        totalMontoTotal += arrayCompras[i].montoTotal();
+                        totalMontoTotal += arrayCompras[i].montoTotal;
+                    }
                     break;
                     
                 case 9:
@@ -221,6 +229,7 @@ public class Menu {
                 default:
                     JOptionPane.showMessageDialog(null, "OPCIÓN NO VÁLIDA");  
             }
+        }
         }while (op!=9);  
     }
 }
