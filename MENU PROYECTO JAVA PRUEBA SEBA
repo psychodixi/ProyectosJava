@@ -187,7 +187,19 @@ public class Menu {
                     break;
                     
                 case 5:
-                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 5
+                    //buscar compra por rut del cliente
+                    String buscar2 = JOptionPane.showInputDialog(null, "CONSULTAR BOLETA POR RUT: " + "\n"
+                            + "INGRESE EL RUT DEL CLIENTE");
+                    for (int i = 0; arrayCompras[i] != null; i++) {
+
+                        if (buscar2.equals(arrayCompras[i].getCliente())) {
+                            arrayCompras[i].mostrarCompra();
+                            i = 3;
+
+                        } else if (i==2){
+                            JOptionPane.showMessageDialog(null, "EL NOMBRE INGRESADO NO EXISTE");
+                        } 
+                    }
                     break;
                     
                 case 6:
@@ -199,15 +211,20 @@ public class Menu {
                     break;
                     
                 case 8:
-                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 8
+                    //"\n8. Mostrar total recaudado"+
+                    
+                    double totalMontoTotal = 0;
+                    for (int i = 0; arrayCompras[i] != null; i++) {
+                        totalMontoTotal += arrayCompras[i].montoTotal();
                     break;
                     
                 case 9:
                     //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 9
+                    System.exit(0);
                     break;    
                     
                 default:
-                    //INGRESE CÓDIGO CORRESPONDIENTE       
+                    JOptionPane.showMessageDialog(null, "OPCIÓN NO VÁLIDA");  
             }
         }while (op!=9);  
     }
