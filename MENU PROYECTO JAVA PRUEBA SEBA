@@ -66,11 +66,42 @@ public class Menu {
                     break;
                     
                 case 3:
-                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 3
+
+                    int conStock = Integer.parseInt(JOptionPane.showInputDialog(null, "CONSULTAR STOCK DE UN PRODUCTO \n"
+                            + "1. MONITORES \n"
+                            + "2. GABINETES \n"
+                            + "3. MEMORIAS RAM \n"));
+                    switch (conStock) {
+                        case 1:
+                            if (arrayProductos[0].getStock()== 0) {
+                                JOptionPane.showMessageDialog(null, "NO HAY SUFICIENTE STOCK");
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "STOCK DE MONITORES: " + arrayProductos[0].getStock()); 
+
+                            }
                     break;
                     
                 case 4:
-                    //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 4
+
+                    String largoP = "";
+                    int largoxd = 0;
+                    for (int i = 0; arrayProductos[i] != null; i++) {
+                        largoxd++;
+                        largoP += "\n" + (i+1) + "." + arrayProductos[i].getNombre();
+                        
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, "PRODUCTOS SIN STOCK");
+                    for (int i = 0; i < arrayProductos.length; i++) {
+                        if (arrayProductos[i].getStock() == 0) {
+                            JOptionPane.showMessageDialog(null, largoP);
+                            
+                            
+                            
+                            
+                        }
+                    }
                     break;
                     
                 case 5:
