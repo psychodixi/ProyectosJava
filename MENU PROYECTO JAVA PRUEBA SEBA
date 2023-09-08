@@ -212,10 +212,32 @@ public class Menu {
                     
                 case 6:
                     //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 6
+                    double compraTar = 0;
+                    
+                    for (int i = 0; arrayCompras[i]!= null; i++) {
+                        
+                        if (arrayCompras[i].getMetodoPago().equals("Tarjeta")) {
+                            compraTar += arrayCompras[i].getMontoTotal();
+                        }
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, "Dinero Recaudado por tarjeta: " + compraTar);
+                    
                     break;
                     
                 case 7:
                     //INGRESE CÓDIGO CORRESPONDIENTE A LA OPCIÓN 7
+                
+                    double compraEfe = 0;
+                    
+                    for (int i = 0; arrayCompras[i]!= null; i++) {
+                        
+                        if (arrayCompras[i].getMetodoPago().equals("Efectivo")) {
+                            compraEfe += arrayCompras[i].getMontoTotal();
+                        }
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, "Dinero Recaudado por Efectivo: " + compraEfe);
                     break;
                     
                 case 8:
